@@ -1,0 +1,39 @@
+@mixin clearfix {
+  &::after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+}
+
+@mixin light_dark_green_gradient_image($imageSrc) {
+  background-image: linear-gradient(
+      to right bottom,
+      rgba($color-primary-light, 0.8),
+      rgba($color-primary-dark, 0.8)
+    ),
+    url($imageSrc);
+  background-size: cover;
+}
+
+@mixin light_dark_green_gradient_text {
+  display: inline-block;
+  background-image: linear-gradient(
+    to right,
+    $color-primary-light,
+    $color-primary-dark
+  );
+
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+@mixin light_dark_green_gradient_text_with_hover_transform {
+  @include light_dark_green_gradient_text();
+  transition: all 0.2s;
+  &:hover {
+    transform: skewX(15deg) skewY(2deg) scale(1.1);
+    text-shadow: 0.5rem 1rem 2rem rgba(#000000, 0.2);
+  }
+}
